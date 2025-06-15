@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAUCET 2025 - CLAIM CRYPTO</title>
+	<link rel="icon" href="ficon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7402bb;
+            --secondary: #9c27b0;
+            --accent: #00bcd4;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --danger: #f44336;
+            --dark: #000000;
+            --darker: #0d0615;
+            --light: #f5f5f5;
+            --card-bg: rgba(5, 3, 8, 0.7);
+            --card-border: rgb(1, 39, 255);
+            --bitcoin: #f7931a;
+            --ethereum: #000000;
+            --litecoin: #345d9d;
+            --dogecoin: #c2a633;
+            --usdt: #26a17b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark), #3d2960);
+            font-family: 'Roboto', sans-serif;
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.836);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(105, 27, 154, 0.808);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #a74805, #ff00cc, #00bde7);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.8rem;
+            color: #00fffff1;
+            margin-right: 15px;
+            text-shadow: 0 0 15px rgba(12, 12, 12, 0.726);
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(90deg, #ff6b00, #ff00cc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, #ff6b00, #ff00cc, #00d0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+        }
+
+        .subtitle {
+           font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: #0300c5;
+            margin-bottom: 25px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .panel {
+            background: rgba(20, 10, 40, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(106, 27, 154, 0.5);
+        }
+
+        .panel-title i {
+            margin-right: 12px;
+            color: #bb86fc;
+            font-size: 1.4rem;
+        }
+
+        .panel-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: #bb86fc;
+            letter-spacing: 1px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #9c9c9c;
+            font-size: 1rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 15px;
+            background: rgba(30, 15, 50, 0.7);
+            border: 1px solid #3700b3;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #bb86fc;
+            box-shadow: 0 0 0 3px rgba(187, 134, 252, 0.2);
+        }
+
+        .btn {
+            font-family: Arial, Helvetica, sans-serif;
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(90deg, #ff6b00, #ff00cc);
+            color: rgb(255, 251, 251);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 15px 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(106, 27, 154, 0.3);
+        }
+
+        th {
+            background: rgba(59, 29, 92, 0.5);
+            color: #ab77eb;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr {
+            transition: background 0.2s ease;
+        }
+
+        tr:hover {
+            background: rgba(106, 27, 154, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            font-size: 1.1rem;
+            color: #bb86fc;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(90deg, #ff6b00, #ff00cc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255, 107, 0, 0.2);
+        }
+
+        .stat-label {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .links-container {
+            margin: 30px 0;
+            background: linear-gradient(to bottom right, #100B19, #2C1B47);
+            border-radius: 15px;
+            padding: 25px;
+            border: 4px solid #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .links-header {
+            text-align: center;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .link-item {
+            display: block;
+            padding: 12px;
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ff6b00;
+            transform: translateX(5px);
+        }
+
+        .link-item i {
+            margin-right: 10px;
+            color: #00d0ff;
+        }
+
+        .link-item.visited::after {
+            content: "✓";
+            position: absolute;
+            right: 15px;
+            color: #4caf50;
+        }
+
+        .alert-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            max-width: 350px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease, fadeOut 0.5s ease 2.5s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alert::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+        }
+
+        .alert-success {
+            background: rgba(76, 175, 80, 0.9);
+            border-left: 5px solid #2e7d32;
+        }
+
+        .alert-error {
+            background: rgba(244, 67, 54, 0.9);
+            border-left: 5px solid #c62828;
+        }
+
+        .alert-info {
+            background: rgba(33, 150, 243, 0.9);
+            border-left: 5px solid #0d47a1;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        .account-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #2196F3, #21CBF3);
+            padding: 15px 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .account-email {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9rem;
+            padding: 20px;
+        }
+
+        .user-email {
+            color: #00d0ff;
+            font-weight: 500;
+        }
+
+        .transaction-id {
+            color: #ff6b00;
+            font-weight: 500;
+        }
+        
+        .form-section {
+            background: rgba(30, 15, 50, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .crypto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .crypto-option {
+            background: rgba(59, 29, 92, 0.5);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .crypto-option:hover {
+            transform: translateY(-3px);
+            border-color: #7119dd;
+        }
+        
+        .crypto-option.active {
+            background: rgba(187, 134, 252, 0.2);
+            border-color: #bb86fc;
+        }
+        
+        .crypto-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .crypto-name {
+             font: 1em sans-serif;
+            font-size: 0.9rem;
+            color: #00e8f0;
+        }
+        
+        .loader {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .hidden {
+            display: none;
+        }
+
+        /* Security badge */
+        .security-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .security-badge i {
+            color: #4caf50;
+        }
+
+        /* Social buttons styling */
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .telegram { background: #0088cc; color: white; }
+        .twitter { background: #1DA1F2; color: white; }
+        .instagram { 
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white; 
+        }
+
+        /* Claim timer */
+        .timer-container {
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(30, 15, 50, 0.5);
+            border-radius: 8px;
+            display: none;
+        }
+
+        .timer-label {
+            color: #bbb;
+            margin-bottom: 5px;
+        }
+
+        .timer-value {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff6b00;
+            font-size: 1.2rem;
+        }
+
+        /* Crypto-specific colors */
+        .btc { color: var(--bitcoin); }
+        .eth { color: var(--ethereum); }
+        .ltc { color: var(--litecoin); }
+        .doge { color: var(--dogecoin); }
+        .usdt { color: var(--usdt); }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .logo-text {
+                font-size: 1.6rem;
+            }
+            
+            .panel {
+                padding: 15px;
+            }
+            
+            .crypto-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            .stat-value {
+                font-size: 1.7rem;
+            }
+            
+            .links-container {
+                padding: 15px;
+            }
+            
+            .link-item {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <i class="fas fa-coins logo-icon"></i>
+                <span class="logo-text">FAUCET 2025</span>
+            </div>
+            <h1>CLAIM CRYPTO</h1>
+            <p class="subtitle">Claim free cryptocurrency every hour</p>
+        </header>
+        
+        <div class="account-info hidden" id="accountInfoContainer">
+            <div class="account-email">
+                <i class="fas fa-user-circle"></i>
+                <span id="accountEmail">user@example.com</span>
+            </div>
+            <button class="logout-btn" id="logoutButton">
+                <i class="fas fa-sign-out-alt"></i> LOGOUT
+            </button>
+        </div>
+        
+        <div class="alert-container" id="alertContainer"></div>
+        
+        <div class="main-content">
+            <div class="panel">
+                <div class="panel-title">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <h2>Account Login</h2>
+                </div>
+                
+                <div class="form-section" id="loginSection">
+                    <div class="input-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Your Faucetpay Email</label>
+                        <input type="email" id="loginEmail" placeholder="Enter your Faucetpay email">
+                    </div>
+                    
+                    <button class="btn" id="loginButton">
+                        <i class="fas fa-right-to-bracket"></i> LOGIN
+                    </button>
+                </div>
+                
+                <div class="form-section hidden" id="claimSection">
+                    <div class="input-group">
+                        <label for="cryptoType"><i class="fas fa-coins"></i> Select Currency</label>
+                        <div class="crypto-grid">
+                            <div class="crypto-option" data-value="BTC">
+                                <div class="crypto-icon btc"><i class="fab fa-bitcoin"></i></div>
+                                <div class="crypto-name">Bitcoin</div>
+                            </div>
+                            <div class="crypto-option" data-value="USDC">
+                                <div class="crypto-icon eth"><i class="fab fa-usdc"></i></div>
+                                <div class="crypto-name">USDC</div>
+                            </div>
+                            <div class="crypto-option" data-value="USDT">
+                                <div class="crypto-icon usdt"><i class="fas fa-dollar-sign"></i></div>
+                                <div class="crypto-name">USDT</div>
+                            </div>
+                            <div class="crypto-option" data-value="LTC">
+                                <div class="crypto-icon ltc"><i class="fab fa-litecoin"></i></div>
+                                <div class="crypto-name">Litecoin</div>
+                            </div>
+                            <div class="crypto-option" data-value="DOGE">
+                                <div class="crypto-icon doge"><i class="fab fa-dogecoin"></i></div>
+                                <div class="crypto-name">Dogecoin</div>
+                            </div>
+							<div class="crypto-option" data-value="DGB">
+                                <div class="crypto-icon dgb"><i class="fab fa-digibyte"></i></div>
+                                <div class="crypto-name">DigiByte</div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="cryptoType" value="">
+                    </div>
+                    
+                    <button class="btn" id="claimButton">
+                        <i class="fas fa-gift"></i> CLAIM CRYPTO
+                    </button>
+                    
+                    <div class="timer-container" id="timerContainer">
+                        <div class="timer-label">Next claim available in:</div>
+                        <div class="timer-value" id="timerValue">10:59</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <div class="panel-title">
+                    <i class="fas fa-list"></i>
+                    <h2>Latest Payments</h2>
+                </div>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTableBody">
+                            <!-- Transactions will be populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="links-container" id="linksContainer">
+            <div class="links-header">
+                <i class="fas fa-link"></i> Complete these steps to claim your cryptocurrency
+            </div>
+            <div id="linksList">
+                <a href="https://scratch-and-win.fanclub.rocks/" class="link-item dynamic-link" data-url="https://scratch-and-win.fanclub.rocks/" target="_blank">
+                    <i class="fas fa-arrow-right"></i> Link NEW SCRATCH USDT | HIGH REWARDS
+                </a>
+                <a href="https://mrpepe.site/" class="link-item dynamic-link" data-url="https://mrpepe.site/" target="_blank">
+                    <i class="fas fa-arrow-right"></i> Link NEW PEPE MINER | NO DEPOSIT | 100% FREE
+                </a>
+                <a href="https://usdcoinminer.store/" class="link-item dynamic-link" data-url="https://usdcoinminer.store/" target="_blank">
+                    <i class="fas fa-arrow-right"></i> Link NEW USDC MINER | NO DEPOSIT | FREE
+                </a>
+                <a href="https://btcfaucet.top/?ref=5" class="link-item dynamic-link" data-url="https://btcfaucet.top/?ref=5" target="_blank">
+                    <i class="fas fa-arrow-right"></i> Link NEW CLAIM BTC EVERY 120 MIN
+				</a>
+                <a href="https://ltcprominer.online/r/576653415" class="link-item dynamic-link" data-url="https://ltcprominer.online/r/576653415" target="_blank">
+                    <i class="fas fa-arrow-right"></i> Link NEW LTC MINER | NO DEPOSIT | 100% FREE
+                </a>
+            </div>
+        </div>
+        
+        <div class="panel">
+            <div class="panel-title">
+                <i class="fas fa-chart-bar"></i>
+                <h2>Platform Statistics</h2>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Users</h3>
+                    <div class="stat-value" id="totalUsers">12,458</div>
+                    <div class="stat-label">Registered Accounts</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Total Payouts</h3>
+                    <div class="stat-value" id="totalPayouts">₿ 42.85</div>
+                    <div class="stat-label">Total Distributed</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Today's Claims</h3>
+                    <div class="stat-value" id="todaysClaims">1,248</div>
+                    <div class="stat-label">Successful Claims</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Active Users</h3>
+                    <div class="stat-value" id="activeUsers">3,587</div>
+                    <div class="stat-label">Currently Online</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="security-badge">
+            <i class="fas fa-shield-alt"></i>
+            <span>Secure SSL Connection • No Personal Data Stored</span>
+        </div>
+        
+        <div class="social-buttons">
+            <a href="https://t.me/FaucetPayOfficial" class="social-btn telegram" target="_blank">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="https://x.com/faucetpayio" class="social-btn twitter" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/faucetpay.earn/" class="social-btn instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        
+        <footer>
+            <div class="logo">
+                <i class="fas fa-coins"></i>
+            </div>
+            <p>FAUCET 2025 - CLAIM CRYPTO | Secure Cryptocurrency Distribution Platform</p>
+            <p>© 2025 All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <!-- Preserving all requested script files -->
+    <script data-savepage-type="" type="text/plain" data-savepage-src="njs/utilsv1.js" defer=""></script>
+    <script data-savepage-type="" type="text/plain" data-savepage-src="njs/IdLocal5.js" defer=""></script>
+    <script data-savepage-type="" type="text/plain" data-savepage-src="njs/loginv5.js" defer=""></script>
+    <script data-savepage-type="" type="text/plain" data-savepage-src="njs/claimformv1.js" defer=""></script>
+    <script data-savepage-type="" type="text/plain" data-savepage-src="njs/button_handlerv1.js" defer=""></script>
+    <script data-savepage-type="" type="text/plain" data-savepage-src="njs/account_handlerv1.js" defer=""></script>
+    <script data-savepage-type="" type="text/plain" data-savepage-src="njs/linksv5.js" defer=""></script>
+    <script data-savepage-type="" type="text/plain" data-savepage-src="njs/rewardv1.js" defer=""></script>
+    <script data-savepage-type="" type="text/plain" data-savepage-src="njs/infoCards.js" defer=""></script>
+    <script data-savepage-type="" type="text/plain" data-savepage-src="njs/TransactionTable.js" defer=""></script>
+    <script data-savepage-type="" type="text/plain" data-savepage-src="njs/appv5.js" defer=""></script>  
+    
+    <script>
+        // Enhanced application with cooldown timer, transaction history and security features
+        const App = {
+            // Initialize the application
+            init: function() {
+                // Initialize local ID
+                this.initLocalId();
+                
+                // Set up event listeners
+                this.setupEventListeners();
+                
+                // Load initial data
+                this.loadInitialData();
+                
+                // Check if user is already logged in
+                this.checkSession();
+            },
+            
+            // Initialize local ID storage
+            initLocalId: function() {
+                const storageKey = 'visitorId';
+                let visitorId = localStorage.getItem(storageKey);
+                
+                if (!visitorId) {
+                    visitorId = 'visitor-' + Math.random().toString(36).substr(2, 9);
+                    localStorage.setItem(storageKey, visitorId);
+                }
+                
+                this.visitorId = visitorId;
+            },
+            
+            // Set up all event listeners
+            setupEventListeners: function() {
+                // Login button
+                document.getElementById('loginButton').addEventListener('click', () => {
+                    this.handleLogin();
+                });
+                
+                // Claim button
+                document.getElementById('claimButton').addEventListener('click', () => {
+                    this.handleClaim();
+                });
+                
+                // Logout button
+                document.getElementById('logoutButton').addEventListener('click', () => {
+                    this.handleLogout();
+                });
+                
+                // Crypto selection
+                document.querySelectorAll('.crypto-option').forEach(option => {
+                    option.addEventListener('click', () => {
+                        this.selectCrypto(option);
+                    });
+                });
+                
+                // Link handling
+                document.querySelectorAll('.dynamic-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        this.handleLinkClick(e, link);
+                    });
+                });
+            },
+            
+            // Check if user has an active session
+            checkSession: function() {
+                const savedEmail = localStorage.getItem('faucetLoginEmail');
+                if (savedEmail) {
+                    this.showAccountInfo(savedEmail);
+                    document.getElementById('loginSection').classList.add('hidden');
+                    document.getElementById('claimSection').classList.remove('hidden');
+                    this.showAlert(`Welcome back, ${savedEmail}`, 'success');
+                    
+                    // Check if user has a cooldown
+                    const lastClaimTime = localStorage.getItem('lastClaimTime');
+                    if (lastClaimTime) {
+                        const elapsed = Date.now() - parseInt(lastClaimTime);
+                        if (elapsed < 60 * 60 * 1000) {
+                            this.startCooldownTimer(60 * 60 * 1000 - elapsed);
+                        }
+                    }
+                }
+            },
+            
+            // Load initial data for the app
+            loadInitialData: function() {
+                // Load transactions
+                this.loadTransactions();
+                
+                // Load statistics
+                this.loadStatistics();
+            },
+            
+            // Handle login process
+            handleLogin: function() {
+                const emailInput = document.getElementById('loginEmail');
+                const email = emailInput.value.trim();
+                const loginButton = document.getElementById('loginButton');
+                
+                // Validate email
+                if (!this.validateEmail(email)) {
+                    this.showAlert('Please enter a valid email address', 'error');
+                    return;
+                }
+                
+                // Update button to show loading
+                loginButton.innerHTML = '<div class="loader"></div> Processing...';
+                loginButton.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Show success
+                    this.showAlert(`Login successful! Welcome ${email}`, 'success');
+                    
+                    // Store email in localStorage
+                    localStorage.setItem('faucetLoginEmail', email);
+                    
+                    // Show account info
+                    this.showAccountInfo(email);
+                    
+                    // Show claim section
+                    document.getElementById('loginSection').classList.add('hidden');
+                    document.getElementById('claimSection').classList.remove('hidden');
+                    
+                    // Reset button
+                    loginButton.innerHTML = '<i class="fas fa-right-to-bracket"></i> LOGIN';
+                    loginButton.disabled = false;
+                }, 1500);
+            },
+            
+            // Handle claim process
+            handleClaim: function() {
+                const cryptoType = document.getElementById('cryptoType').value;
+                const claimButton = document.getElementById('claimButton');
+                
+                if (!cryptoType) {
+                    this.showAlert('Please select a cryptocurrency', 'error');
+                    return;
+                }
+                
+                // Check if user has a cooldown
+                const lastClaimTime = localStorage.getItem('lastClaimTime');
+                if (lastClaimTime) {
+                    const elapsed = Date.now() - parseInt(lastClaimTime);
+                    if (elapsed < 60 * 60 * 1000) {
+                        const remaining = Math.ceil((60*60*1000 - elapsed) / (60 * 1000));
+                        this.showAlert(`Please wait ${remaining} minutes before claiming again`, 'error');
+                        return;
+                    }
+                }
+                
+                // Update button to show loading
+                claimButton.innerHTML = '<div class="loader"></div> Processing Claim...';
+                claimButton.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Show success
+                    const amount = this.getCryptoAmount(cryptoType);
+                    this.showAlert(`Success! ${amount} ${cryptoType} has been sent to your account`, 'success');
+                    
+                    // Add transaction to table
+                    this.addTransaction(cryptoType, amount);
+                    
+                    // Update statistics
+                    this.updateStats();
+                    
+                    // Set cooldown
+                    localStorage.setItem('lastClaimTime', Date.now().toString());
+                    this.startCooldownTimer(60 * 60 * 1000);
+                    
+                    // Reset button
+                    claimButton.innerHTML = '<i class="fas fa-gift"></i> CLAIM CRYPTO';
+                    claimButton.disabled = false;
+                }, 2000);
+            },
+            
+            // Start cooldown timer
+            startCooldownTimer: function(duration) {
+                const timerContainer = document.getElementById('timerContainer');
+                const timerValue = document.getElementById('timerValue');
+                const claimButton = document.getElementById('claimButton');
+                
+                // Show timer and disable claim button
+                timerContainer.style.display = 'block';
+                claimButton.disabled = true;
+                
+                let timer = duration;
+                const interval = setInterval(() => {
+                    const minutes = Math.floor(timer / 60000);
+                    const seconds = Math.floor((timer % 60000) / 1000);
+                    
+                    timerValue.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    timer -= 1000;
+                    
+                    if (timer < 0) {
+                        clearInterval(interval);
+                        timerContainer.style.display = 'none';
+                        claimButton.disabled = false;
+                        localStorage.removeItem('lastClaimTime');
+                    }
+                }, 1000);
+            },
+            
+            // Get crypto amount based on type
+            getCryptoAmount: function(cryptoType) {
+                const amounts = {
+                    'BTC': '0.0000005',
+                    'ETH': '0.00005',
+                    'LTC': '0.005',
+                    'DOGE': '0.05',
+                    'USDT': '0.05'
+                };
+                return amounts[cryptoType] || '0.00005';
+            },
+            
+            // Handle logout
+            handleLogout: function() {
+                // Hide account info and claim section
+                document.getElementById('accountInfoContainer').classList.add('hidden');
+                document.getElementById('claimSection').classList.add('hidden');
+                
+                // Show login section
+                document.getElementById('loginSection').classList.remove('hidden');
+                
+                // Remove stored email
+                localStorage.removeItem('faucetLoginEmail');
+                
+                // Remove last claim time
+                localStorage.removeItem('lastClaimTime');
+                
+                // Hide timer
+                document.getElementById('timerContainer').style.display = 'none';
+                
+                // Show alert
+                this.showAlert('You have been logged out successfully', 'info');
+            },
+            
+            // Handle crypto selection
+            selectCrypto: function(element) {
+                // Remove active class from all options
+                document.querySelectorAll('.crypto-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                
+                // Add active class to selected option
+                element.classList.add('active');
+                
+                // Set the value
+                const value = element.getAttribute('data-value');
+                document.getElementById('cryptoType').value = value;
+                
+                // Store selection
+                localStorage.setItem('selectedCrypto', value);
+            },
+            
+            // Handle link clicks
+            handleLinkClick: function(e, link) {
+                e.preventDefault();
+                const url = link.getAttribute('data-url');
+                
+                // Mark as visited
+                link.classList.add('visited');
+                
+                // Open in new tab
+                window.open(url, '_blank');
+                
+                // Check if all links are visited
+                this.checkLinksCompletion();
+            },
+            
+            // Check if all links are completed
+            checkLinksCompletion: function() {
+                const links = document.querySelectorAll('.dynamic-link');
+                const visited = document.querySelectorAll('.dynamic-link.visited');
+                
+                if (links.length === visited.length) {
+                    this.showAlert('All steps completed! You can now claim your cryptocurrency', 'success');
+                }
+            },
+            
+            // Load transactions
+            loadTransactions: function() {
+                const tbody = document.getElementById('transactionTableBody');
+                
+                // Sample transactions
+                const transactions = [
+                    {id: 100, crypto: 'BTC', amount: '0.00005', email: 'ad***@myguard.com', date: '2025-06-14 07:01:04'},
+                    {id: 200, crypto: 'ETH', amount: '0.0005', email: 'ad***@myguard.com', date: '2025-06-13 12:08:38'},
+                    {id: 300, crypto: 'LTC', amount: '0.005', email: 'ad***@myguard.com', date: '2025-06-13 09:19:14'},
+                    {id: 400, crypto: 'DOGE', amount: '5', email: 'ad***@myguard.com', date: '2025-06-13 10:18:39'},
+                    {id: 500, crypto: 'USDT', amount: '0.5', email: 'ad***@myguard.com', date: '2025-06-13 15:16:36'}
+                ];
+                
+                // Clear existing rows
+                tbody.innerHTML = '';
+                
+                // Add transactions to table
+                transactions.forEach(tx => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="transaction-id">${tx.id}</td>
+                        <td><span class="user-email">${tx.email}</span></td>
+                        <td>${tx.amount} ${tx.crypto}</td>
+                        <td>${tx.date}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            },
+            
+            // Add a new transaction
+            addTransaction: function(cryptoType, amount) {
+                const tbody = document.getElementById('transactionTableBody');
+                const newId = Math.floor(Math.random() * 900) + 100;
+                const email = document.getElementById('accountEmail').textContent;
+                const now = new Date();
+                const dateStr = now.toISOString().split('T')[0] + ' ' + 
+                              now.getHours().toString().padStart(2, '0') + ':' + 
+                              now.getMinutes().toString().padStart(2, '0') + ':' + 
+                              now.getSeconds().toString().padStart(2, '0');
+                
+                const maskedEmail = this.maskEmail(email);
+                
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td class="transaction-id">${newId}</td>
+                    <td><span class="user-email">${maskedEmail}</span></td>
+                    <td>${amount} ${cryptoType}</td>
+                    <td>${dateStr}</td>
+                `;
+                
+                tbody.insertBefore(newRow, tbody.firstChild);
+                
+                // Remove the last row if there are too many
+                if (tbody.children.length > 10) {
+                    tbody.removeChild(tbody.lastChild);
+                }
+            },
+            
+            // Load statistics
+            loadStatistics: function() {
+                // In a real app, this would fetch from an API
+                console.log('Loading statistics...');
+            },
+            
+            // Update stats after a claim
+            updateStats: function() {
+                // Update today's claims
+                const claimsElement = document.getElementById('todaysClaims');
+                let claims = parseInt(claimsElement.textContent.replace(/,/g, ''));
+                claims++;
+                claimsElement.textContent = claims.toLocaleString();
+                
+                // Update active users
+                const activeElement = document.getElementById('activeUsers');
+                let active = parseInt(activeElement.textContent.replace(/,/g, ''));
+                active = Math.max(active, Math.floor(active * 1.02)); // Simulate fluctuation
+                activeElement.textContent = active.toLocaleString();
+                
+                // Update total payouts
+                const payoutsElement = document.getElementById('totalPayouts');
+                let payouts = parseFloat(payoutsElement.textContent.split(' ')[1]);
+                payouts += 0.00005; // Add BTC equivalent
+                payoutsElement.textContent = `₿ ${payouts.toFixed(5)}`;
+            },
+            
+            // Show account info after login
+            showAccountInfo: function(email) {
+                const container = document.getElementById('accountInfoContainer');
+                const emailElement = document.getElementById('accountEmail');
+                
+                emailElement.textContent = email;
+                container.classList.remove('hidden');
+            },
+            
+            // Show alert message
+            showAlert: function(message, type) {
+                const container = document.getElementById('alertContainer');
+                const alertDiv = document.createElement('div');
+                
+                alertDiv.className = `alert alert-${type}`;
+                alertDiv.textContent = message;
+                
+                container.appendChild(alertDiv);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    alertDiv.remove();
+                }, 3000);
+            },
+            
+            // Validate email format
+            validateEmail: function(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            },
+            
+            // Mask email for display
+            maskEmail: function(email) {
+                const parts = email.split('@');
+                if (parts.length < 2) return email;
+                
+                const username = parts[0];
+                const domain = parts[1];
+                
+                if (username.length <= 2) {
+                    return username.charAt(0) + '*'.repeat(username.length - 1) + '@' + domain;
+                }
+                
+                return username.substring(0, 2) + '*'.repeat(username.length - 2) + '@' + domain;
+            }
+        };
+        
+        // Initialize the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            App.init();
+        });
+    </script>
+</body>
+</html>
